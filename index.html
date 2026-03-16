@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 594mm; /* Force at least 2 A4 pages height */
+            min-height: 593.5mm; /* Slightly less than 2 pages to avoid 3rd page overflow */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 594mm; /* Stretch to match sheet */
+            min-height: 593.5mm; /* Match sheet */
             position: relative;
             background: #fff;
         }
@@ -347,15 +347,15 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 594mm; /* Force exactly 2-page height */
+                height: 593.5mm; /* Safe 2-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 594mm; /* Force height to match sheet */
-                min-height: 594mm;
+                height: 593.5mm; 
+                min-height: 593.5mm;
                 background: #fff !important;
                 display: flex;
             }
