@@ -615,6 +615,7 @@
     <!-- PDF Export Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
+        document.getElementById("downloadPDF").addEventListener("click", function () {
             console.log("PDF Exporting with v2.1 (592mm Height Fix)");
             const element = document.getElementById("resume");
             const opt = {
