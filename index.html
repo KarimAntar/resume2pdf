@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: var(--page-h);
+            min-height: 594mm; /* Force at least 2 A4 pages height */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: var(--page-h);
+            min-height: 594mm; /* Stretch to match sheet */
             position: relative;
             background: #fff;
         }
