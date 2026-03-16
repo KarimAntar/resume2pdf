@@ -347,17 +347,26 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                min-height: 594mm; /* Force 2-page height for sidebar continuity */
+                height: 594mm; /* Force exactly 2-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
+                display: flex;
+                flex-direction: column;
             }
 
             .resume-container {
-                min-height: auto;
+                height: 594mm; /* Force height to match sheet */
+                min-height: 594mm;
+                background: #fff !important;
+                display: flex;
             }
 
-            /* Background gradient on .sheet handles the bars naturally */
             .sidebar {
+                height: 100%;
                 border-right: var(--divider) solid var(--red) !important;
+            }
+
+            .content {
+                height: 100%;
             }
 
             .sidebar, .content {
