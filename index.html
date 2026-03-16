@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nayera Mohamed - CV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --red: #D51A23;
+            --dark: #222222;
+            --muted: #777777;
+            --bg: #FFFFFF;
+
+            --page-w: 210mm;
+            --page-h: 297mm;
+
+            --sidebar-w: 84mm;
+            /* width of left column area */
+            --leftbar: 10mm;
+            /* thick red bar */
+            --divider: 1.2px;
+            /* thin divider */
+
+            --pad-y: 9mm;
+            --side-pr: 8mm;
+            --side-pl: 8mm;
+            --content-pl: 8mm;
+
+            --base: 10pt;
+            --small: 9pt;
+            --h1: 20.5pt;
+            --h2: 12pt;
+            --lh: 1.22;
+
+            --pi-label: 28mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f3f3;
+            font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--dark);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* ===== Toolbar for Screen ===== */
+        .toolbar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        #downloadPDF {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(213, 26, 35, 0.3);
+            transition: transform 0.2s, background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #downloadPDF:hover {
+            background: #b5151d;
+            transform: translateY(-2px);
+        }
+
+        #downloadPDF:active {
+            transform: translateY(0);
+        }
+
+        /* ===== Screen preview sheet ===== */
+        .sheet {
+            width: var(--page-w);
+            background: var(--bg);
+            margin: 12px auto;
+            position: relative;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
+            overflow: visible;
+            min-height: var(--page-h);
+            z-index: 1;
+
+            /* Stable red bar using border on the main container */
+            border-left: var(--leftbar) solid var(--red);
+        }
+
+        /* ===== Sidebar / Layout ===== */
+        .resume-container {
+            display: flex;
+            min-height: var(--page-h);
+            position: relative;
+            background: #fff;
+        }
+
+        .sidebar {
+            width: calc(var(--sidebar-w) - var(--leftbar)); /* Adjust for sheet border */
+            padding-top: var(--pad-y);
+            padding-bottom: var(--pad-y);
+            padding-right: var(--side-pr);
+            padding-left: var(--side-pl);
+            background: transparent;
+            position: relative;
+            flex-shrink: 0;
+
+            /* Stable thin divider line using border on sidebar */
+            border-right: var(--divider) solid var(--red);
+        }
+
+        .content {
+            flex-grow: 1;
+            padding-top: var(--pad-y);
+            padding-bottom: var(--pad-y);
+            padding-right: 9mm;
+            padding-left: var(--content-pl);
+            min-height: var(--page-h);
+            position: relative;
+            background: transparent;
+        }
+
+        /* Photo */
+        .photo {
+            width: 32mm;
+            height: 32mm;
+            border-radius: 999px;
+            border: 2px solid var(--red);
+            margin: 1mm auto 3.5mm;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            background: #fff;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo .placeholder {
+            font-size: var(--small);
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.15;
+        }
+
+        .name {
+            text-align: center;
+            font-weight: 700;
+            font-size: var(--h1);
+            letter-spacing: .2px;
+            margin: 0 0 6mm;
+        }
+
+        .section {
+            margin-bottom: 5mm;
+            break-inside: avoid;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: var(--h2);
+            font-weight: 700;
+            margin: 0 0 3mm;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 999px;
+            background: var(--red);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 24px;
+        }
+
+        .icon svg {
+            display: block;
+            /* Sizes and colors are now set in html attributes for reliability */
+        }
+
+        .para {
+            margin: 0;
+            font-size: var(--base);
+            line-height: var(--lh);
+        }
+
+        /* Personal Info */
+        .dl {
+            margin: 0;
+            font-size: var(--base);
+            line-height: var(--lh);
+        }
+
+        .dl .row {
+            display: grid;
+            grid-template-columns: var(--pi-label) 1fr;
+            column-gap: 10px;
+            padding: 0 0 2mm;
+            width: 100%;
+        }
+
+        .dl dt {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .dl dd {
+            margin: 0;
+            min-width: 0;
+        }
+
+        /* Contact (stacked) */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: var(--base);
+            line-height: var(--lh);
+        }
+
+        .contact-item {
+            margin: 0 0 3.2mm;
+        }
+
+        .contact-label {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            margin: 0.8mm 0 0;
+            min-width: 0;
+            word-break: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-value.email {
+            font-size: var(--small);
+        }
+
+        /* Lists */
+        .list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: var(--base);
+            line-height: var(--lh);
+        }
+
+        .list li {
+            margin: 0 0 1.3mm;
+        }
+
+        /* Work entries */
+        .entry {
+            margin-bottom: 3.6mm;
+        }
+
+        .entry-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin: 0 0 1.4mm;
+            font-size: var(--base);
+            line-height: var(--lh);
+            font-weight: 600;
+        }
+
+        .mark {
+            width: 9px;
+            height: 9px;
+            border-radius: 3px;
+            background: var(--red);
+            margin-top: 3px;
+            flex: 0 0 9px;
+        }
+
+        .entry-title {
+            min-width: 0;
+        }
+
+        .date {
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .page-break {
+            break-before: page;
+        }
+
+        .sr-only {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===== PRINT & PDF ===== */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+
+            .toolbar {
+                display: none !important;
+            }
+
+            .sheet {
+                width: 100%;
+                margin: 0;
+                box-shadow: none;
+                overflow: visible;
+                background-color: #fff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                min-height: 594mm; /* Force 2-page height for sidebar continuity */
+                border-left: var(--leftbar) solid var(--red) !important;
+            }
+
+            .resume-container {
+                min-height: auto;
+            }
+
+            /* Background gradient on .sheet handles the bars naturally */
+            .sidebar {
+                border-right: var(--divider) solid var(--red) !important;
+            }
+
+            .sidebar, .content {
+                background: transparent !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toolbar">
+        <button id="downloadPDF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+            </svg>
+            Download PDF
+        </button>
+    </div>
+
+    <div class="sheet" id="resume">
+        <div class="resume-container">
+            <!-- LEFT SIDEBAR -->
+            <aside class="sidebar">
+                <div class="photo">
+                    <div class="placeholder">Add<br>Photo</div>
+                </div>
+
+                <h1 class="name">Nayera Mohamed</h1>
+
+                <section class="section" aria-label="Personal Info">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5C21 16.5 17 14 12 14Z" />
+                            </svg>
+                        </span>
+                        <span>Personal Info</span>
+                    </div>
+
+                    <dl class="dl">
+                        <div class="row">
+                            <dt>Date of birth:</dt>
+                            <dd>12/6/1999</dd>
+                        </div>
+                        <div class="row">
+                            <dt>Passport:</dt>
+                            <dd>A39686652</dd>
+                        </div>
+                        <div class="row">
+                            <dt>Height:</dt>
+                            <dd>169 CM</dd>
+                        </div>
+                        <div class="row">
+                            <dt>Martial Status:</dt>
+                            <dd>Single</dd>
+                        </div>
+                        <div class="row">
+                            <dt>Nationality:</dt>
+                            <dd>Egyptian</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="section" aria-label="Contact">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.3 11.3 0 0 0 3.5.56 1 1 0 0 1 1 1V21a1 1 0 0 1-1 1A18 18 0 0 1 3 5a1 1 0 0 1 1-1h3.9a1 1 0 0 1 1 1 11.3 11.3 0 0 0 .56 3.5 1 1 0 0 1-.24 1Z" />
+                            </svg>
+                        </span>
+                        <span>Contact</span>
+                    </div>
+
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <p class="contact-label">Phone:</p>
+                            <p class="contact-value">01123008046 - 01055255073</p>
+                        </li>
+                        <li class="contact-item">
+                            <p class="contact-label">Email:</p>
+                            <p class="contact-value email">Nayeramohamed820@yahoo.com</p>
+                        </li>
+                        <li class="contact-item" style="margin-bottom:0;">
+                            <p class="contact-label">Address:</p>
+                            <p class="contact-value">528 El delta el gdeda, El Salam City, Cairo. Egyp</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="section" aria-label="Langueges" style="margin-bottom:0;">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm7.93 9h-3.1a15.6 15.6 0 0 0-1.4-5.02A8.03 8.03 0 0 1 19.93 11ZM12 4c.7 0 1.94 1.82 2.6 5H9.4C10.06 5.82 11.3 4 12 4ZM4.07 13h3.1a15.6 15.6 0 0 0 1.4 5.02A8.03 8.03 0 0 1 4.07 13ZM7.17 11H4.07a8.03 8.03 0 0 1 4.5-5.02A15.6 15.6 0 0 0 7.17 11Zm2.23 2h5.2c-.66 3.18-1.9 5-2.6 5s-1.94-1.82-2.6-5Zm6.03 5.02A15.6 15.6 0 0 0 16.83 13h3.1a8.03 8.03 0 0 1-4.5 5.02Z" />
+                            </svg>
+                        </span>
+                        <span>Langueges</span>
+                    </div>
+
+                    <ul class="list">
+                        <li>English</li>
+                        <li>Arabic</li>
+                        <li>French</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <!-- RIGHT CONTENT -->
+            <main class="content">
+                <section class="section" aria-label="About Me">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 15h-2v-6h2Zm0-8h-2V7h2Z" />
+                            </svg>
+                        </span>
+                        <span>About Me</span>
+                    </div>
+                    <p class="para">
+                        A Passionate And Customer-Focused Individual Seeking A Cabin Crew Position At Emirates Airline. With
+                        Strong Interpersonal Skills, Adaptability, And A Commitment To Providing Exceptional Service, I Aim
+                        To Create A Welcoming And Comfortable Experience For Passengers. My Background In Customer Service,
+                        Medical Assistance, And Sales Has Equipped Me With The Ability To Handle Diverse Situations With
+                        Professionalism And Care.
+                    </p>
+                </section>
+
+                <section class="section" aria-label="Work Experience">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M10 4h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v3h-8v-1h-2v1H2v-3a2 2 0 0 1 2-2h4V6a2 2 0 0 1 2-2Zm0 4h4V6h-4Zm14 8v4a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-4h10v1h4v-1Z" />
+                            </svg>
+                        </span>
+                        <span>Work Experience</span>
+                    </div>
+
+                    <article class="entry">
+                        <div class="entry-head"><span class="mark" aria-hidden="true"></span>
+                            <span class="entry-title">Customer service, Vodafone UK, Egypt — <span class="date">September
+                                    2021 – 2023</span></span>
+                        </div>
+                        <ul class="list">
+                            <li>Assisted Customers By Answering Inquiries And Resolving Complex Issues.</li>
+                            <li>Identified Customer Needs And Clarified Information.</li>
+                            <li>Communicated With Customers To Ensure A Positive Experience.</li>
+                            <li>Developed Problem-Solving Skills And The Ability To Work Under Pressure.</li>
+                        </ul>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-head"><span class="mark" aria-hidden="true"></span>
+                            <span class="entry-title">Travel advisor, Teleperformance Egypt, Cairo, Egypt — <span
+                                    class="date">January 2023 – Present</span></span>
+                        </div>
+                        <ul class="list">
+                            <li>Helped Customers By Understanding Their Needs And Giving Clear, Helpful Answers.</li>
+                            <li>Solved Problems Quickly And Followed Up To Make Sure Customers Were Satisfied.</li>
+                            <li>Used The Right Tools To Provide Accurate And Easy-To-Understand Information.</li>
+                            <li>Stayed Calm And Professional When Handling Difficult Situations.</li>
+                            <li>Met Targets For Service Quality And Number Of Calls.</li>
+                            <li>Always Gave Extra Effort To Make Customers Feel Valued And Build Trust.</li>
+                        </ul>
+                    </article>
+
+                    <article class="entry">
+                        <div class="entry-head"><span class="mark" aria-hidden="true"></span>
+                            <span class="entry-title">Medical Volunteer – El Sahel Hospital — <span class="date">February
+                                    2023 – May 2023</span></span>
+                        </div>
+                        <ul class="list">
+                            <li>Assisted Nurses In Basic Patient Care, Ensuring Patient Comfort.</li>
+                            <li>Gained Essential First-Aid Knowledge And Medical Awareness.</li>
+                            <li>Strengthened Interpersonal And Problem-Solving Skills By Addressing Patient Needs.</li>
+                            <li>Enhanced My Ability To Handle Medical Emergencies Calmly And Effectively.</li>
+                        </ul>
+                    </article>
+
+                    <article class="entry" style="margin-bottom:0;">
+                        <div class="entry-head"><span class="mark" aria-hidden="true"></span>
+                            <span class="entry-title">Sales Assistant – Yora’s — <span class="date">January 2024 – April
+                                    2024 – (Part–Time)</span></span>
+                        </div>
+                        <ul class="list">
+                            <li>Provided Direct Customer Service, Assisting Shoppers In Selecting Products.</li>
+                            <li>Developed Strong Sales And Negotiation Skills While Handling Transactions.</li>
+                            <li>Enhanced My Ability To Engage With Customers Face-To-Face In A Fast-Paced Environment.</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <div class="page-break"></div>
+
+                <section class="section" aria-label="Education" style="margin-top: var(--pad-y);">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 3 1 8l11 5 9-4.09V16h2V8L12 3Zm-6.5 9.09V16c0 2.21 3.13 4 7 4s7-1.79 7-4v-3.91l-7 3.18-7-3.18Z" />
+                            </svg>
+                        </span>
+                        <span>Education</span>
+                    </div>
+
+                    <article class="entry">
+                        <div class="entry-head" style="margin:0;"><span class="mark" aria-hidden="true"></span>
+                            <span class="entry-title">Bachelor of language and translation — CHI, Cairo, Egypt, <span
+                                    class="date">2021</span></span>
+                        </div>
+                    </article>
+
+                    <article class="entry" style="margin-bottom:0;">
+                        <div class="entry-head" style="margin:0;"><span class="mark" aria-hidden="true"></span>
+                            <span class="entry-title">High school — El khansaa, <span class="date">2017</span></span>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="section" aria-label="Skills" style="margin-bottom:0;">
+                    <div class="section-title">
+                        <span class="icon" aria-hidden="true">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z" />
+                            </svg>
+                        </span>
+                        <span>Skills</span>
+                    </div>
+
+                    <ul class="list">
+                        <li>Communication</li>
+                        <li>Problems Solving</li>
+                        <li>Patience</li>
+                        <li>Adaptability</li>
+                        <li>Teamwork</li>
+                        <li>Time Management</li>
+                    </ul>
+                </section>
+
+                <div class="sr-only">
+                    Nayera Mohamed. Contact: 01123008046, 01055255073. Email: Nayeramohamed820@yahoo.com.
+                    Address: 528 El delta el gdeda, El Salam City, Cairo. Egyp.
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- PDF Export Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        document.getElementById("downloadPDF").addEventListener("click", function () {
+            const element = document.getElementById("resume");
+            const opt = {
+                margin: 0,
+                filename: "Nayera_Mohamed_CV.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { 
+                    scale: 2, 
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true
+                },
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+                pagebreak: { mode: ['css', 'legacy'] }
+            };
+
+            // Start the download
+            html2pdf().set(opt).from(element).save();
+        });
+    </script>
+</body>
+
+</html>
