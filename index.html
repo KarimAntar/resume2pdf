@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 593.5mm; /* Slightly less than 2 pages to avoid 3rd page overflow */
+            min-height: 592mm; /* Further reduced to strictly prevent 3rd page overflow */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 593.5mm; /* Match sheet */
+            min-height: 592mm; /* Match sheet */
             position: relative;
             background: #fff;
         }
@@ -347,15 +347,15 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 593.5mm; /* Safe 2-page height */
+                height: 592mm; /* Safe 2-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 593.5mm; 
-                min-height: 593.5mm;
+                height: 592mm; 
+                min-height: 592mm;
                 background: #fff !important;
                 display: flex;
             }
@@ -615,7 +615,7 @@
     <!-- PDF Export Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-        document.getElementById("downloadPDF").addEventListener("click", function () {
+            console.log("PDF Exporting with v2.1 (592mm Height Fix)");
             const element = document.getElementById("resume");
             const opt = {
                 margin: 0,
@@ -625,10 +625,11 @@
                     scale: 2, 
                     useCORS: true,
                     logging: false,
-                    letterRendering: true
+                    letterRendering: true,
+                    windowHeight: 2237 // Hard-coded height for stability
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-                pagebreak: { mode: ['css', 'legacy'] }
+                pagebreak: { mode: 'css' }
             };
 
             // Start the download
