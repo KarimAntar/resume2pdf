@@ -28,18 +28,18 @@
             --divider: 1.2px;
             /* thin divider */
 
-            --pad-y: 9mm;
-            --side-pr: 8mm;
-            --side-pl: 8mm;
-            --content-pl: 8mm;
+            --pad-y: 7mm;
+            --side-pr: 6mm;
+            --side-pl: 6mm;
+            --content-pl: 7mm;
 
-            --base: 10pt;
-            --small: 9pt;
-            --h1: 20.5pt;
-            --h2: 12pt;
-            --lh: 1.22;
+            --base: 9.5pt;
+            --small: 8.5pt;
+            --h1: 19.5pt;
+            --h2: 11.5pt;
+            --lh: 1.15;
 
-            --pi-label: 28mm;
+            --pi-label: 26mm;
         }
 
         * {
@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 585mm; /* Back to 2 pages for full experience */
+            min-height: 296mm; /* One A4 page with safety margin */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 585mm; /* Match sheet */
+            min-height: 296mm; /* Match sheet */
             position: relative;
             background: #fff;
         }
@@ -347,15 +347,15 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 585mm; /* Safe 2-page height */
+                height: 296mm; /* Safe 1-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 585mm; 
-                min-height: 585mm;
+                height: 296mm; 
+                min-height: 296mm;
                 background: #fff !important;
                 display: flex;
             }
@@ -611,7 +611,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById("downloadPDF").addEventListener("click", function () {
-            console.log("PDF Exporting with v3.1 (Restored Experience + 585mm)");
+            console.log("PDF Exporting with v3.2 (Condensed Full Hub)");
             const element = document.getElementById("resume");
             const opt = {
                 margin: [0, 0, 0, 0],
@@ -622,7 +622,7 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 2211, // Match 585mm @ 96dpi
+                    windowHeight: 1118, // Match 296mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
