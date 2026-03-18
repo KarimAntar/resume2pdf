@@ -96,7 +96,8 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 285mm; /* Further reduced height */
+            min-height: 280mm; /* Aggressive reduction to strictly ensure 1-page */
+            overflow: hidden !important; 
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +107,8 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 285mm; /* Match sheet */
+            min-height: 280mm; /* Match sheet */
+            overflow: hidden !important;
             position: relative;
             background: #fff;
         }
@@ -343,19 +345,20 @@
                 width: 100%;
                 margin: 0;
                 box-shadow: none;
-                overflow: visible;
+                overflow: hidden !important; 
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 285mm; /* Safe 1-page height */
+                height: 280mm; /* Strict 1-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 285mm; 
-                min-height: 285mm;
+                height: 280mm; 
+                min-height: 280mm;
+                overflow: hidden !important;
                 background: #fff !important;
                 display: flex;
             }
@@ -611,7 +614,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById("downloadPDF").addEventListener("click", function () {
-            console.log("PDF Exporting with v3.2 (Condensed Full Hub)");
+            console.log("PDF Exporting with v3.3 (Strict 280mm One-Page)");
             const element = document.getElementById("resume");
             const opt = {
                 margin: [0, 0, 0, 0],
@@ -622,11 +625,11 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 1077, // Match 285mm @ 96dpi
+                    windowHeight: 1058, // Match 280mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-                pagebreak: { mode: 'css' }
+                pagebreak: { mode: 'avoid-all' }
             };
 
             // Start the download
