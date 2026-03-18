@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 296mm; /* One A4 page with safety margin */
+            min-height: 285mm; /* Further reduced height */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 296mm; /* Match sheet */
+            min-height: 285mm; /* Match sheet */
             position: relative;
             background: #fff;
         }
@@ -347,15 +347,15 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 296mm; /* Safe 1-page height */
+                height: 285mm; /* Safe 1-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 296mm; 
-                min-height: 296mm;
+                height: 285mm; 
+                min-height: 285mm;
                 background: #fff !important;
                 display: flex;
             }
@@ -443,11 +443,11 @@
                     <ul class="contact-list">
                         <li class="contact-item">
                             <p class="contact-label">Phone:</p>
-                            <p class="contact-value">01123008046 - 01055255073</p>
+                            <p class="contact-value">01055255073</p>
                         </li>
                         <li class="contact-item">
                             <p class="contact-label">Email:</p>
-                            <p class="contact-value email">Nayeramohamed820@yahoo.com</p>
+                            <p class="contact-value email">nayeramohamed399@gmail.com</p>
                         </li>
                         <li class="contact-item" style="margin-bottom:0;">
                             <p class="contact-label">Address:</p>
@@ -600,7 +600,7 @@
 
 
                 <div class="sr-only">
-                    Nayera Mohamed. Contact: 01123008046, 01055255073. Email: Nayeramohamed820@yahoo.com.
+                    Nayera Mohamed. Contact: 01055255073. Email: nayeramohamed399@gmail.com.
                     Address: 528 El delta el gdeda, El Salam City, Cairo. Egyp.
                 </div>
             </main>
@@ -622,7 +622,7 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 1118, // Match 296mm @ 96dpi
+                    windowHeight: 1077, // Match 285mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
