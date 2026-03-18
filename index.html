@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 296mm; /* Exactly one A4 page with a tiny safety margin */
+            min-height: 585mm; /* Back to 2 pages for full experience */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 296mm; /* Match sheet */
+            min-height: 585mm; /* Match sheet */
             position: relative;
             background: #fff;
         }
@@ -347,15 +347,15 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 296mm; /* Safe 1-page height */
+                height: 585mm; /* Safe 2-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 296mm; 
-                min-height: 296mm;
+                height: 585mm; 
+                min-height: 585mm;
                 background: #fff !important;
                 display: flex;
             }
@@ -528,8 +528,10 @@
                                     2021 – 2023</span></span>
                         </div>
                         <ul class="list">
-                            <li>Assisted Customers By Resolving Complex Issues And Ensuring A Positive Experience.</li>
-                            <li>Identified Needs, Clarified Information, And Worked Effectively Under Pressure.</li>
+                            <li>Assisted Customers By Answering Inquiries And Resolving Complex Issues.</li>
+                            <li>Identified Customer Needs And Clarified Information.</li>
+                            <li>Communicated With Customers To Ensure A Positive Experience.</li>
+                            <li>Developed Problem-Solving Skills And The Ability To Work Under Pressure.</li>
                         </ul>
                     </article>
 
@@ -539,8 +541,10 @@
                                     class="date">January 2023 – Present</span></span>
                         </div>
                         <ul class="list">
-                            <li>Understanding Needs And Giving Clear, Helpful Answers.</li>
-                            <li>Solved Problems Quickly And Followed Up To Ensure Customer Satisfaction.</li>
+                            <li>Helped Customers By Understanding Their Needs And Giving Clear, Helpful Answers.</li>
+                            <li>Solved Problems Quickly And Followed Up To Make Sure Customers Were Satisfied.</li>
+                            <li>Stayed Calm And Professional When Handling Difficult Situations.</li>
+                            <li>Always Gave Extra Effort To Make Customers Feel Valued And Build Trust.</li>
                         </ul>
                     </article>
 
@@ -552,6 +556,8 @@
                         <ul class="list">
                             <li>Assisted Nurses In Basic Patient Care, Ensuring Patient Comfort.</li>
                             <li>Gained Essential First-Aid Knowledge And Medical Awareness.</li>
+                            <li>Strengthened Interpersonal And Problem-Solving Skills By Addressing Patient Needs.</li>
+                            <li>Enhanced My Ability To Handle Medical Emergencies Calmly And Effectively.</li>
                         </ul>
                     </article>
 
@@ -563,6 +569,7 @@
                         <ul class="list">
                             <li>Provided Direct Customer Service, Assisting Shoppers In Selecting Products.</li>
                             <li>Developed Strong Sales And Negotiation Skills While Handling Transactions.</li>
+                            <li>Enhanced My Ability To Engage With Customers Face-To-Face In A Fast-Paced Environment.</li>
                         </ul>
                     </article>
                 </section>
@@ -604,7 +611,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById("downloadPDF").addEventListener("click", function () {
-            console.log("PDF Exporting with v3.0 (1-Page Condensed)");
+            console.log("PDF Exporting with v3.1 (Restored Experience + 585mm)");
             const element = document.getElementById("resume");
             const opt = {
                 margin: [0, 0, 0, 0],
@@ -615,7 +622,7 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 1118, // Match 296mm @ 96dpi
+                    windowHeight: 2211, // Match 585mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
