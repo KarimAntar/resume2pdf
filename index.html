@@ -96,7 +96,7 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 585mm; /* Aggressive reduction to strictly ensure 2 pages max */
+            min-height: 296mm; /* Exactly one A4 page with a tiny safety margin */
             z-index: 1;
 
             /* Stable red bar using border on the main container */
@@ -106,7 +106,7 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 585mm; /* Match sheet */
+            min-height: 296mm; /* Match sheet */
             position: relative;
             background: #fff;
         }
@@ -347,15 +347,15 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 585mm; /* Safe 2-page height */
+                height: 296mm; /* Safe 1-page height */
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 585mm; 
-                min-height: 585mm;
+                height: 296mm; 
+                min-height: 296mm;
                 background: #fff !important;
                 display: flex;
             }
@@ -506,11 +506,9 @@
                         <span>About Me</span>
                     </div>
                     <p class="para">
-                        A Passionate And Customer-Focused Individual Seeking A Cabin Crew Position At Emirates Airline. With
-                        Strong Interpersonal Skills, Adaptability, And A Commitment To Providing Exceptional Service, I Aim
-                        To Create A Welcoming And Comfortable Experience For Passengers. My Background In Customer Service,
-                        Medical Assistance, And Sales Has Equipped Me With The Ability To Handle Diverse Situations With
-                        Professionalism And Care.
+                        A Customer-Focused Professional Seeking A Cabin Crew Position At Emirates Airline. 
+                        With Strong Interpersonal Skills, Adaptability, And A Commitment To Providing Exceptional Service, 
+                        I Aim To Create A Professional And Welcoming Experience For Every Passenger.
                     </p>
                 </section>
 
@@ -530,10 +528,8 @@
                                     2021 – 2023</span></span>
                         </div>
                         <ul class="list">
-                            <li>Assisted Customers By Answering Inquiries And Resolving Complex Issues.</li>
-                            <li>Identified Customer Needs And Clarified Information.</li>
-                            <li>Communicated With Customers To Ensure A Positive Experience.</li>
-                            <li>Developed Problem-Solving Skills And The Ability To Work Under Pressure.</li>
+                            <li>Assisted Customers By Resolving Complex Issues And Ensuring A Positive Experience.</li>
+                            <li>Identified Needs, Clarified Information, And Worked Effectively Under Pressure.</li>
                         </ul>
                     </article>
 
@@ -543,10 +539,8 @@
                                     class="date">January 2023 – Present</span></span>
                         </div>
                         <ul class="list">
-                            <li>Helped Customers By Understanding Their Needs And Giving Clear, Helpful Answers.</li>
-                            <li>Solved Problems Quickly And Followed Up To Make Sure Customers Were Satisfied.</li>
-                            <li>Stayed Calm And Professional When Handling Difficult Situations.</li>
-                            <li>Always Gave Extra Effort To Make Customers Feel Valued And Build Trust.</li>
+                            <li>Understanding Needs And Giving Clear, Helpful Answers.</li>
+                            <li>Solved Problems Quickly And Followed Up To Ensure Customer Satisfaction.</li>
                         </ul>
                     </article>
 
@@ -558,27 +552,22 @@
                         <ul class="list">
                             <li>Assisted Nurses In Basic Patient Care, Ensuring Patient Comfort.</li>
                             <li>Gained Essential First-Aid Knowledge And Medical Awareness.</li>
-                            <li>Strengthened Interpersonal And Problem-Solving Skills By Addressing Patient Needs.</li>
-                            <li>Enhanced My Ability To Handle Medical Emergencies Calmly And Effectively.</li>
                         </ul>
                     </article>
 
                     <article class="entry" style="margin-bottom:0;">
                         <div class="entry-head"><span class="mark" aria-hidden="true"></span>
                             <span class="entry-title">Sales Assistant – Yora’s — <span class="date">January 2024 – April
-                                    2024 – (Part–Time)</span></span>
+                                    2024</span></span>
                         </div>
                         <ul class="list">
                             <li>Provided Direct Customer Service, Assisting Shoppers In Selecting Products.</li>
                             <li>Developed Strong Sales And Negotiation Skills While Handling Transactions.</li>
-                            <li>Enhanced My Ability To Engage With Customers Face-To-Face In A Fast-Paced Environment.</li>
                         </ul>
                     </article>
                 </section>
 
-                <div class="page-break"></div>
-
-                <section class="section" aria-label="Education" style="margin-top: var(--pad-y);">
+                <section class="section" aria-label="Education" style="margin-top: 10px; margin-bottom: 0;">
                     <div class="section-title">
                         <span class="icon" aria-hidden="true">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
@@ -588,9 +577,9 @@
                         <span>Education</span>
                     </div>
 
-                    <article class="entry">
+                    <article class="entry" style="margin-bottom: 5px;">
                         <div class="entry-head" style="margin:0;"><span class="mark" aria-hidden="true"></span>
-                            <span class="entry-title">Bachelor of language and translation — CHI, Cairo, Egypt, <span
+                            <span class="entry-title">Bachelor of language and translation — CHI, Cairo, <span
                                     class="date">2021</span></span>
                         </div>
                     </article>
@@ -615,7 +604,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById("downloadPDF").addEventListener("click", function () {
-            console.log("PDF Exporting with v2.3 (585mm Aggressive Height)");
+            console.log("PDF Exporting with v3.0 (1-Page Condensed)");
             const element = document.getElementById("resume");
             const opt = {
                 margin: [0, 0, 0, 0],
@@ -626,7 +615,7 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 2211, // Match 585mm @ 96dpi
+                    windowHeight: 1118, // Match 296mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
