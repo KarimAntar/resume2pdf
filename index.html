@@ -96,8 +96,8 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 288mm; /* Balanced 1-page height */
-            max-height: 288mm !important;
+            min-height: 290mm; /* Requested 1-page height */
+            max-height: 290mm !important;
             overflow: hidden !important; 
             z-index: 1;
 
@@ -108,8 +108,8 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 288mm; /* Match sheet */
-            max-height: 288mm !important;
+            min-height: 290mm; /* Match sheet */
+            max-height: 290mm !important;
             overflow: hidden !important;
             position: relative;
             background: #fff;
@@ -361,17 +361,17 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 288mm; /* Balanced 1-page height */
-                max-height: 288mm !important;
+                height: 290mm; /* Requested 1-page height */
+                max-height: 290mm !important;
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 288mm; 
-                min-height: 288mm;
-                max-height: 288mm !important;
+                height: 290mm; 
+                min-height: 290mm;
+                max-height: 290mm !important;
                 overflow: hidden !important;
                 background: #fff !important;
                 display: flex;
@@ -628,7 +628,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById("downloadPDF").addEventListener("click", function () {
-            console.log("PDF Exporting with v3.5 (Balanced 288mm)");
+            console.log("PDF Exporting with v3.6 (Fixed 290mm)");
             const element = document.getElementById("resume");
             const opt = {
                 margin: 0,
@@ -639,7 +639,7 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 1088, // Match 288mm @ 96dpi
+                    windowHeight: 1100, // Match 290mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
