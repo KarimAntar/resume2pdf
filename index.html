@@ -96,7 +96,8 @@
             position: relative;
             box-shadow: 0 12px 30px rgba(0, 0, 0, .10);
             overflow: visible;
-            min-height: 280mm; /* Aggressive reduction to strictly ensure 1-page */
+            min-height: 270mm; /* Strict safety zone */
+            max-height: 270mm !important;
             overflow: hidden !important; 
             z-index: 1;
 
@@ -107,7 +108,8 @@
         /* ===== Sidebar / Layout ===== */
         .resume-container {
             display: flex;
-            min-height: 280mm; /* Match sheet */
+            min-height: 270mm; /* Match sheet */
+            max-height: 270mm !important;
             overflow: hidden !important;
             position: relative;
             background: #fff;
@@ -341,6 +343,16 @@
                 display: none !important;
             }
 
+            @page {
+                size: A4;
+                margin: 0 !important;
+            }
+
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
             .sheet {
                 width: 100%;
                 margin: 0;
@@ -349,15 +361,17 @@
                 background-color: #fff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-                height: 280mm; /* Strict 1-page height */
+                height: 270mm; /* Strict 1-page height */
+                max-height: 270mm !important;
                 border-left: var(--leftbar) solid var(--red) !important;
                 display: flex;
                 flex-direction: column;
             }
 
             .resume-container {
-                height: 280mm; 
-                min-height: 280mm;
+                height: 270mm; 
+                min-height: 270mm;
+                max-height: 270mm !important;
                 overflow: hidden !important;
                 background: #fff !important;
                 display: flex;
@@ -614,10 +628,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById("downloadPDF").addEventListener("click", function () {
-            console.log("PDF Exporting with v3.3 (Strict 280mm One-Page)");
+            console.log("PDF Exporting with v3.4 (Strict 270mm Safe Zone)");
             const element = document.getElementById("resume");
             const opt = {
-                margin: [0, 0, 0, 0],
+                margin: 0,
                 filename: "Nayera_Mohamed_CV.pdf",
                 image: { type: "jpeg", quality: 0.98 },
                 html2canvas: { 
@@ -625,7 +639,7 @@
                     useCORS: true,
                     logging: false,
                     letterRendering: true,
-                    windowHeight: 1058, // Match 280mm @ 96dpi
+                    windowHeight: 1020, // Match 270mm @ 96dpi
                     scrollY: 0
                 },
                 jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
